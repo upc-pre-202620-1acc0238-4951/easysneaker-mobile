@@ -1,6 +1,7 @@
 package pe.edu.upc.easysneaker.features.home.presentation
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -19,10 +20,10 @@ import pe.edu.upc.easysneaker.core.theme.EasySneakerTheme
 import pe.edu.upc.easysneaker.features.home.domain.Product
 
 @Composable
-fun ProductList() {
+fun ProductList(modifier: Modifier = Modifier, products: List<Product>) {
 
 
-    LazyColumn {
+    LazyColumn(modifier = modifier.fillMaxSize()) {
         items(products) { product ->
             Card(
                 modifier = Modifier
@@ -33,7 +34,9 @@ fun ProductList() {
                     AsyncImage(
                         model = product.imageUrl,
                         contentDescription = product.name,
-                        modifier = Modifier.fillMaxWidth().height(200.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(200.dp)
                     )
                     Text(product.name, fontWeight = FontWeight.Bold)
                     Text("${product.rating}")
@@ -50,6 +53,6 @@ fun ProductList() {
 @Composable
 fun ProductListPreview() {
     EasySneakerTheme {
-        ProductList()
+        ProductList(products = emptyList())
     }
 }
