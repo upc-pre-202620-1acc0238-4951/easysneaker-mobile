@@ -1,4 +1,4 @@
-package pe.edu.upc.easysneaker.ui.theme
+package pe.edu.upc.easysneaker.core.theme
 import androidx.compose.ui.graphics.Color
 
 val primaryLight = Color(0xFF6D5E0F)

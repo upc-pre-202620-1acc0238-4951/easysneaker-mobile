@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pe.edu.upc.easysneaker.ui.arrowForward
-import pe.edu.upc.easysneaker.ui.theme.EasySneakerTheme
+import pe.edu.upc.easysneaker.core.theme.EasySneakerTheme
 
 
 @Composable
