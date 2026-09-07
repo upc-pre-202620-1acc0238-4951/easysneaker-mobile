@@ -1,4 +1,4 @@
-package pe.edu.upc.easysneaker.ui
+package pe.edu.upc.easysneaker.core
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
@@ -79,7 +79,7 @@ val visibility: ImageVector
                         strokeLineCap = StrokeCap.Butt,
                         strokeLineJoin = StrokeJoin.Bevel,
                         strokeLineMiter = 1f,
-                        pathFillType = PathFillType.Companion.NonZero,
+                        pathFillType = PathFillType.NonZero,
                     ) {
                         moveTo(15.19f, 14.69f)
                         quadTo(16.5f, 13.38f, 16.5f, 11.5f)

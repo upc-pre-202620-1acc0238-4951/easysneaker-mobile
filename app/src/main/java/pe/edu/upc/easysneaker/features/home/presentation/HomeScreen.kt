@@ -1,4 +1,4 @@
-package pe.edu.upc.easysneaker
+package pe.edu.upc.easysneaker.features.home.presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

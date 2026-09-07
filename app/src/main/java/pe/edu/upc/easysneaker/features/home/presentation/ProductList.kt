@@ -1,7 +1,6 @@
-package pe.edu.upc.easysneaker
+package pe.edu.upc.easysneaker.features.home.presentation
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import pe.edu.upc.easysneaker.core.theme.EasySneakerTheme
 import pe.edu.upc.easysneaker.features.home.domain.Product
 
@@ -50,6 +50,10 @@ fun ProductList() {
                     .padding(8.dp)
             ) {
                 Column(modifier = Modifier.padding(8.dp)) {
+                    AsyncImage(
+                        model = product.imageUrl,
+                        contentDescription = product.name
+                    )
                     Text(product.name, fontWeight = FontWeight.Bold)
                     Text("${product.rating}")
                     Text("$ ${product.price}")
