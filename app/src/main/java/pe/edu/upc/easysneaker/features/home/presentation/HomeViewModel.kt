@@ -7,11 +7,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import pe.edu.upc.easysneaker.features.home.domain.ProductRepository
-import pe.edu.upc.easysneaker.features.home.infrastructure.InMemoryRepository
+import pe.edu.upc.easysneaker.features.home.application.GetProductsUseCase
 
 class HomeViewModel(
-    private val productRepository: ProductRepository = InMemoryRepository()
+    private val getProducts: GetProductsUseCase = GetProductsUseCase()
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(HomeUiState())
@@ -29,7 +28,7 @@ class HomeViewModel(
             }
 
             try {
-                val products = productRepository.getProducts()
+                val products = getProducts()
                 _uiState.update { currentState ->
                     currentState.copy(
                         isLoading = false,
