@@ -1,9 +1,13 @@
 package pe.edu.upc.easysneaker.features.home.presentation
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -14,11 +18,26 @@ fun HomeScreen(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(),
 ) {
-    val products = viewModel.uiState.collectAsState().value.products
+    val state = viewModel.uiState.collectAsState().value
 
-    Column(modifier = modifier.fillMaxSize()) {
+    Column(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        when {
+            state.products.isNotEmpty() -> {
+                ProductList(products = state.products)
+            }
 
-        ProductList(products = products)
+            state.isLoading -> {
+                CircularProgressIndicator()
+            }
+
+            else -> {
+                Text(text = "No products found")
+            }
+        }
     }
 }
 
