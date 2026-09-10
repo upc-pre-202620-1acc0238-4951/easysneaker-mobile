@@ -1,4 +1,4 @@
-package pe.edu.upc.easysneaker.features.home.infrastructure
+package pe.edu.upc.easysneaker.features.home.infrastructure.repository
 
 import kotlinx.coroutines.delay
 import pe.edu.upc.easysneaker.features.home.domain.Product
