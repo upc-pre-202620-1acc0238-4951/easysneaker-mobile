@@ -29,7 +29,7 @@ class ProductRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getProductById(id: Int): Product? {
-        val response = service.getProductById()
+        val response = service.getProductById(id)
 
         if (response.isSuccessful) {
             response.body()?.let { dto ->

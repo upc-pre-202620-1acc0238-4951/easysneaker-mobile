@@ -19,7 +19,11 @@ import pe.edu.upc.easysneaker.core.theme.EasySneakerTheme
 import pe.edu.upc.easysneaker.features.home.domain.Product
 
 @Composable
-fun ProductList(modifier: Modifier = Modifier, products: List<Product>) {
+fun ProductList(
+    modifier: Modifier = Modifier,
+    products: List<Product>,
+    onProductClick: (Product) -> Unit
+) {
 
 
     LazyColumn(modifier = modifier.fillMaxSize()) {
@@ -27,7 +31,10 @@ fun ProductList(modifier: Modifier = Modifier, products: List<Product>) {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp)
+                    .padding(8.dp),
+                onClick = {
+                    onProductClick(product)
+                }
             ) {
                 Column(modifier = Modifier.padding(8.dp)) {
                     AsyncImage(
@@ -52,6 +59,6 @@ fun ProductList(modifier: Modifier = Modifier, products: List<Product>) {
 @Composable
 fun ProductListPreview() {
     EasySneakerTheme {
-        ProductList(products = emptyList())
+        ProductList(products = emptyList()) {}
     }
 }
