@@ -18,7 +18,8 @@ class ProductRepositoryImpl @Inject constructor(
                         name = dto.name,
                         price = dto.price,
                         rating = dto.rating,
-                        imageUrl = dto.image
+                        imageUrl = dto.image,
+                        description = dto.description
                     )
                 }.toList()
             }
