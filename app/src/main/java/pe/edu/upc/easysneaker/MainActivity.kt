@@ -8,7 +8,6 @@ import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import pe.edu.upc.easysneaker.core.AppNavHost
 import pe.edu.upc.easysneaker.core.theme.EasySneakerTheme
-import pe.edu.upc.easysneaker.features.home.presentation.HomeScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

@@ -28,7 +28,7 @@ class ProductDetailViewModel @Inject constructor(
                 }
 
             } catch (e: Exception) {
-                _uiState.value = ProductDetailUiState.Error("An error occurred")
+                _uiState.value = ProductDetailUiState.Error(e.message ?: "An error occurred")
             }
         }
     }
