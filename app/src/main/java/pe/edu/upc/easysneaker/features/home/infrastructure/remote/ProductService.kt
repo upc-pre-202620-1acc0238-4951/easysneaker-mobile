@@ -7,4 +7,7 @@ interface ProductService {
 
     @GET("products")
     suspend fun getProducts(): Response<ProductsResponseDto>
+
+    @GET("products/id")
+    suspend fun getProductById(): Response<ProductDto>
 }

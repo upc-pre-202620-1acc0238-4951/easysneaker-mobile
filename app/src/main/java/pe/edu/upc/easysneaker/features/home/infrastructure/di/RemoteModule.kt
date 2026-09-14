@@ -22,7 +22,6 @@ object RemoteModule {
             .build()
     }
 
-
     @Provides
     @Singleton
     fun provideProductService(retrofit: Retrofit): ProductService {

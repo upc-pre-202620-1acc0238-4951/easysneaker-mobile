@@ -40,4 +40,8 @@ class InMemoryRepository : ProductRepository {
         delay(2000.milliseconds) // Simulate network delay
         return products
     }
+
+    override suspend fun getProductById(id: Int): Product? {
+        return products.find { it.id == id }
+    }
 }

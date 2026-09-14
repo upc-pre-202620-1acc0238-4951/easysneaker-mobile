@@ -6,7 +6,8 @@ import pe.edu.upc.easysneaker.features.home.infrastructure.remote.ProductService
 import javax.inject.Inject
 
 class ProductRepositoryImpl @Inject constructor(
-    private val service: ProductService) : ProductRepository {
+    private val service: ProductService
+) : ProductRepository {
     override suspend fun getProducts(): List<Product> {
         val response = service.getProducts()
 
@@ -25,5 +26,25 @@ class ProductRepositoryImpl @Inject constructor(
             }
         }
         return emptyList()
+    }
+
+    override suspend fun getProductById(id: Int): Product? {
+        val response = service.getProductById()
+
+        if (response.isSuccessful) {
+            response.body()?.let { dto ->
+                return Product(
+                    id = dto.id,
+                    name = dto.name,
+                    price = dto.price,
+                    rating = dto.rating,
+                    imageUrl = dto.image,
+                    description = dto.description
+                )
+
+            }
+        }
+        return null
+
     }
 }
