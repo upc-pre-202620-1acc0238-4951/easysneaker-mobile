@@ -3,16 +3,10 @@ package pe.edu.upc.easysneaker.features.home.infrastructure.repository
 import pe.edu.upc.easysneaker.features.home.domain.Product
 import pe.edu.upc.easysneaker.features.home.domain.ProductRepository
 import pe.edu.upc.easysneaker.features.home.infrastructure.remote.ProductService
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-class ProductRepositoryImpl(
-    private val service: ProductService =
-        Retrofit.Builder().baseUrl("https://sneakerapi-y3ub.onrender.com/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build().create(ProductService::class.java)
-
-) : ProductRepository {
+class ProductRepositoryImpl @Inject constructor(
+    private val service: ProductService) : ProductRepository {
     override suspend fun getProducts(): List<Product> {
         val response = service.getProducts()
 
