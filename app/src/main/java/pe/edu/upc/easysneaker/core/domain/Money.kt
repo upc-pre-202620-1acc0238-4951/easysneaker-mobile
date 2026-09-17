@@ -1,4 +1,4 @@
-package pe.edu.upc.easysneaker.features.home.domain
+package pe.edu.upc.easysneaker.core.domain
 
 data class Money(
     val amount: Double,
@@ -9,4 +9,3 @@ data class Money(
         require(currency.isNotEmpty()) { "Currency must not be empty" }
     }
 }
-
