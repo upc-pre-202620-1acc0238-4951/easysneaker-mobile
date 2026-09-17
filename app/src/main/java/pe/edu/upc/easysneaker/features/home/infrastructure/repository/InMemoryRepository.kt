@@ -3,9 +3,10 @@ package pe.edu.upc.easysneaker.features.home.infrastructure.repository
 import kotlinx.coroutines.delay
 import pe.edu.upc.easysneaker.features.home.domain.Product
 import pe.edu.upc.easysneaker.features.home.domain.ProductRepository
+import javax.inject.Inject
 import kotlin.time.Duration.Companion.milliseconds
 
-class InMemoryRepository : ProductRepository {
+class InMemoryRepository @Inject constructor() : ProductRepository {
 
     val products = listOf(
         Product(
@@ -42,6 +43,7 @@ class InMemoryRepository : ProductRepository {
     }
 
     override suspend fun getProductById(id: Int): Product? {
+        delay(1000.milliseconds)
         return products.find { it.id == id }
     }
 }
