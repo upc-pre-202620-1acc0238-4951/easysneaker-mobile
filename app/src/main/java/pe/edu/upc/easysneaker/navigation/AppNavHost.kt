@@ -1,4 +1,4 @@
-package pe.edu.upc.easysneaker.core.navigation
+package pe.edu.upc.easysneaker.navigation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomAppBar
