@@ -1,4 +1,4 @@
-package pe.edu.upc.easysneaker.features.home.presentation
+package pe.edu.upc.easysneaker.features.home.presentation.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import pe.edu.upc.easysneaker.core.designsystem.theme.EasySneakerTheme
 import pe.edu.upc.easysneaker.features.home.domain.Product
+import pe.edu.upc.easysneaker.features.home.presentation.home.components.ProductList
 
 @Composable
 fun HomeScreen(

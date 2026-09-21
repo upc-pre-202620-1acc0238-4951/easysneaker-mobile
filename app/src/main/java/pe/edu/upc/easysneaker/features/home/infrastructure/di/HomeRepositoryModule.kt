@@ -9,7 +9,7 @@ import pe.edu.upc.easysneaker.features.home.infrastructure.repository.ProductRep
 
 @Module
 @InstallIn(ViewModelComponent::class)
-interface RepositoryModule {
+interface HomeRepositoryModule {
 
     @Binds
     fun provideProductRepository(impl: ProductRepositoryImpl): ProductRepository

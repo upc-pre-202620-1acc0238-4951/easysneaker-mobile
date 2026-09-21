@@ -1,4 +1,4 @@
-package pe.edu.upc.easysneaker.core
+package pe.edu.upc.easysneaker.core.designsystem.icon
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
@@ -228,7 +228,7 @@ private var _visibilityOff: ImageVector? = null
 
 
 @Suppress("CheckReturnValue")
-public val arrowBack: ImageVector
+val arrowBack: ImageVector
     get() {
         if (_arrowBack != null) {
             return _arrowBack!!
@@ -251,7 +251,7 @@ public val arrowBack: ImageVector
                         strokeLineCap = StrokeCap.Butt,
                         strokeLineJoin = StrokeJoin.Bevel,
                         strokeLineMiter = 1f,
-                        pathFillType = PathFillType.Companion.NonZero,
+                        pathFillType = PathFillType.NonZero,
                     ) {
                         moveTo(7.83f, 13f)
                         lineToRelative(5.6f, 5.6f)
