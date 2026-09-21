@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pe.edu.upc.easysneaker.R
 import pe.edu.upc.easysneaker.core.arrowForward
-import pe.edu.upc.easysneaker.core.theme.EasySneakerTheme
+import pe.edu.upc.easysneaker.core.designsystem.theme.EasySneakerTheme
 
 
 @Composable
