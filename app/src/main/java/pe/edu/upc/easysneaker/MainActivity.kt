@@ -6,8 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import pe.edu.upc.easysneaker.core.AppNavHost
 import pe.edu.upc.easysneaker.core.designsystem.theme.EasySneakerTheme
+import pe.edu.upc.easysneaker.navigation.AppNavHost
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
