@@ -12,6 +12,7 @@ data class ProductEntity(
     val price: Double,
     val rating: Double,
     @ColumnInfo(name = "image_url")
-    val image: Double
+    val image: String,
+    val description: String
 )
 
