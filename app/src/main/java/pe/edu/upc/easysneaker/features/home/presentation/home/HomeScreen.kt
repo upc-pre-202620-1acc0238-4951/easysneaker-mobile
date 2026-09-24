@@ -32,6 +32,9 @@ fun HomeScreen(
             state.products.isNotEmpty() -> {
                 ProductList(
                     products = state.products,
+                    onToggleFavorite = {
+
+                    },
                     onProductClick = onProductClick
                 )
             }

@@ -81,4 +81,8 @@ class ProductRepositoryImpl @Inject constructor(
         }
         return null
     }
+
+    override suspend fun toggleFavoriteProduct(id: Int) {
+        TODO("Not yet implemented")
+    }
 }

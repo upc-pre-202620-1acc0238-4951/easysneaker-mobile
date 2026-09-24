@@ -20,7 +20,7 @@ fun NavGraphBuilder.homeNavGraph(navController: NavController) {
 
     composable<HomeRoute> {
 
-        HomeScreen { product ->
+        HomeScreen  { product ->
             navController.navigate(ProductDetailRoute(product.id))
         }
 

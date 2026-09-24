@@ -22,33 +22,19 @@ import pe.edu.upc.easysneaker.features.home.domain.Product
 fun ProductList(
     modifier: Modifier = Modifier,
     products: List<Product>,
+    onToggleFavorite: (Product) -> Unit,
     onProductClick: (Product) -> Unit
 ) {
 
 
     LazyColumn(modifier = modifier.fillMaxSize()) {
         items(products) { product ->
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
-                onClick = {
-                    onProductClick(product)
-                }
-            ) {
-                Column(modifier = Modifier.padding(8.dp)) {
-                    AsyncImage(
-                        model = product.imageUrl,
-                        contentDescription = product.name,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(200.dp)
-                    )
-                    Text(product.name, fontWeight = FontWeight.Bold)
-                    Text("${product.rating}")
-                    Text("$ ${product.price}")
-                }
-
+            ProductCard(
+                product = product,
+                onToggleFavorite = {
+                    onToggleFavorite(product)
+                }) {
+                onProductClick(product)
             }
         }
     }
@@ -59,6 +45,6 @@ fun ProductList(
 @Composable
 fun ProductListPreview() {
     EasySneakerTheme {
-        ProductList(products = emptyList()) {}
+        ProductList(products = emptyList(), onToggleFavorite = {}) {}
     }
 }

@@ -8,7 +8,7 @@ import kotlin.time.Duration.Companion.milliseconds
 
 class InMemoryRepository @Inject constructor() : ProductRepository {
 
-    val products = listOf(
+    var products = listOf(
         Product(
             id = 1,
             name = "Nike Air Motion",
@@ -37,7 +37,6 @@ class InMemoryRepository @Inject constructor() : ProductRepository {
     )
 
     override suspend fun getProducts(): List<Product> {
-
         delay(2000.milliseconds) // Simulate network delay
         return products
     }
@@ -45,5 +44,16 @@ class InMemoryRepository @Inject constructor() : ProductRepository {
     override suspend fun getProductById(id: Int): Product? {
         delay(1000.milliseconds)
         return products.find { it.id == id }
+    }
+
+    override suspend fun toggleFavoriteProduct(id: Int) {
+         products = products.map {
+            if (it.id == id) {
+                it.copy(isFavorite = !it.isFavorite)
+            } else {
+              it
+            }
+
+        }
     }
 }
