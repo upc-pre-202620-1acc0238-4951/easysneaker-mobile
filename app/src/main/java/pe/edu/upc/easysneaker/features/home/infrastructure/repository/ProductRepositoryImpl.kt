@@ -3,7 +3,8 @@ package pe.edu.upc.easysneaker.features.home.infrastructure.repository
 import pe.edu.upc.easysneaker.features.home.domain.Product
 import pe.edu.upc.easysneaker.features.home.domain.ProductRepository
 import pe.edu.upc.easysneaker.features.home.infrastructure.local.ProductDao
-import pe.edu.upc.easysneaker.features.home.infrastructure.local.ProductEntity
+import pe.edu.upc.easysneaker.features.home.infrastructure.local.ProductEntityAssembler
+import pe.edu.upc.easysneaker.features.home.infrastructure.remote.ProductDtoAssembler
 import pe.edu.upc.easysneaker.features.home.infrastructure.remote.ProductService
 import javax.inject.Inject
 
@@ -17,16 +18,7 @@ class ProductRepositoryImpl @Inject constructor(
             val response = service.getProducts()
             if (response.isSuccessful) {
                 response.body()?.let { productsResponseDto ->
-                    val entities = productsResponseDto.products.map { dto ->
-                        ProductEntity(
-                            id = dto.id,
-                            name = dto.name,
-                            price = dto.price,
-                            rating = dto.rating,
-                            image = dto.image,
-                            description = dto.description
-                        )
-                    }.toList()
+                    val entities = ProductDtoAssembler.toEntityList(productsResponseDto.products)
                     dao.insertProducts(entities)
                 }
             }
@@ -34,17 +26,8 @@ class ProductRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
 
         }
-        return dao.fetchAllProducts().map { entity ->
-            Product(
-                id = entity.id,
-                name = entity.name,
-                price = entity.price,
-                rating = entity.rating,
-                imageUrl = entity.image,
-                description = entity.description
-            )
-        }
-
+        val entities = dao.fetchAllProducts()
+        return ProductEntityAssembler.toDomainList(entities)
     }
 
     override suspend fun getProductById(id: Int): Product? {
@@ -54,14 +37,7 @@ class ProductRepositoryImpl @Inject constructor(
 
             if (response.isSuccessful) {
                 response.body()?.let { dto ->
-                    val entity = ProductEntity(
-                        id = dto.id,
-                        name = dto.name,
-                        price = dto.price,
-                        rating = dto.rating,
-                        image = dto.image,
-                        description = dto.description
-                    )
+                    val entity = ProductDtoAssembler.toEntity(dto)
                     dao.insertProduct(entity)
                 }
             }
@@ -69,17 +45,7 @@ class ProductRepositoryImpl @Inject constructor(
 
         }
         val entity = dao.fetchProductById(id)
-        entity?.let {
-            return Product(
-                id = it.id,
-                name = it.name,
-                price = it.price,
-                rating = it.rating,
-                imageUrl = it.image,
-                description = it.description
-            )
-        }
-        return null
+        return ProductEntityAssembler.toDomainFromEntity(entity)
     }
 
     override suspend fun toggleFavoriteProduct(id: Int) {
