@@ -20,7 +20,7 @@ data class ProductDetailRoute(val id: Int)
 
 fun NavGraphBuilder.homeNavGraph(navController: NavController) {
 
-    navigation<HomeNavGraphRoute>(startDestination = HomeRoute::class) {
+    navigation<HomeNavGraphRoute>(startDestination = HomeRoute) {
 
         composable<HomeRoute> {
 

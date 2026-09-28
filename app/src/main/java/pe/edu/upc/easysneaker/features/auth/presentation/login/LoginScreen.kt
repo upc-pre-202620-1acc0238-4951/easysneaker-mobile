@@ -1,4 +1,4 @@
-package pe.edu.upc.easysneaker.features.auth.presentation
+package pe.edu.upc.easysneaker.features.auth.presentation.login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,10 +24,14 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import pe.edu.upc.easysneaker.core.designsystem.icon.visibility
 import pe.edu.upc.easysneaker.core.designsystem.icon.visibilityOff
 import pe.edu.upc.easysneaker.core.designsystem.theme.EasySneakerTheme
+import pe.edu.upc.easysneaker.features.auth.presentation.LoginViewModel
 
 
 @Composable
-fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
+fun LoginScreen(
+    viewModel: LoginViewModel = hiltViewModel(),
+    onRegisterClick: () -> Unit
+) {
 
     val state = viewModel.state.collectAsState().value
 
@@ -88,7 +92,7 @@ fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
             )
         }
         OutlinedButton(
-            onClick = {}, modifier = Modifier
+            onClick = onRegisterClick, modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
         ) {
@@ -103,7 +107,6 @@ fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
 @Composable
 fun LoginScreenPreview() {
     EasySneakerTheme {
-        LoginScreen()
-
+        LoginScreen {}
     }
 }

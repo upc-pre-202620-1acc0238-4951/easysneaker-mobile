@@ -9,7 +9,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import pe.edu.upc.easysneaker.features.auth.presentation.navigation.AuthNavGraphRoute
 import pe.edu.upc.easysneaker.features.auth.presentation.navigation.authNavGraph
-import pe.edu.upc.easysneaker.features.home.presentation.navigation.HomeNavGraphRoute
 import pe.edu.upc.easysneaker.features.home.presentation.navigation.homeNavGraph
 
 @Composable
