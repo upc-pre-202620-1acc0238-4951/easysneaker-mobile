@@ -13,33 +13,23 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import pe.edu.upc.easysneaker.core.designsystem.icon.visibility
 import pe.edu.upc.easysneaker.core.designsystem.icon.visibilityOff
 import pe.edu.upc.easysneaker.core.designsystem.theme.EasySneakerTheme
 
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
 
-    val email = remember {
-        mutableStateOf("")
-    }
-
-    val password = remember {
-        mutableStateOf("")
-    }
-
-    val isPasswordHidden = remember {
-        mutableStateOf(true)
-    }
+    val state = viewModel.state.collectAsState().value
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -47,9 +37,9 @@ fun LoginScreen() {
         modifier = Modifier.fillMaxSize()
     ) {
         OutlinedTextField(
-            value = email.value,
-            onValueChange = { newValue ->
-                email.value = newValue
+            value = state.email,
+            onValueChange = {
+                viewModel.onEmailChanged(it)
             },
             placeholder = { Text(text = "Email") },
             modifier = Modifier
@@ -60,24 +50,22 @@ fun LoginScreen() {
         Spacer(modifier = Modifier.padding(vertical = 8.dp))
 
         OutlinedTextField(
-            value = password.value,
-            onValueChange = { newValue ->
-                password.value = newValue
+            value = state.password,
+            onValueChange = {
+                viewModel.onPasswordChange(it)
             },
             placeholder = { Text(text = "Password") },
-            visualTransformation = if (isPasswordHidden.value) {
+            visualTransformation = if (state.isHidden) {
                 PasswordVisualTransformation()
             } else {
                 VisualTransformation.None
             },
             trailingIcon = {
                 IconButton(
-                    onClick = {
-                        isPasswordHidden.value = !isPasswordHidden.value
-                    }
+                    onClick = viewModel::togglePasswordVisibility
                 ) {
                     Icon(
-                        imageVector = if (isPasswordHidden.value)
+                        imageVector = if (state.isHidden)
                             visibilityOff else
                             visibility, contentDescription = null
                     )
@@ -90,7 +78,8 @@ fun LoginScreen() {
         Spacer(modifier = Modifier.padding(vertical = 8.dp))
 
         Button(
-            onClick = {}, modifier = Modifier
+            onClick =
+                viewModel::signIn, modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
         ) {
