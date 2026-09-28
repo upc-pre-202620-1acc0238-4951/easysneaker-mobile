@@ -13,6 +13,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,11 +31,17 @@ import pe.edu.upc.easysneaker.features.auth.presentation.LoginViewModel
 @Composable
 fun LoginScreen(
     viewModel: LoginViewModel = hiltViewModel(),
+    onLoginSuccess: () -> Unit,
     onRegisterClick: () -> Unit
 ) {
 
     val state = viewModel.state.collectAsState().value
 
+    LaunchedEffect(state) {
+        if (state.isAuthenticated) {
+            onLoginSuccess()
+        }
+    }
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -107,6 +114,6 @@ fun LoginScreen(
 @Composable
 fun LoginScreenPreview() {
     EasySneakerTheme {
-        LoginScreen {}
+        LoginScreen(onLoginSuccess = {}) {}
     }
 }

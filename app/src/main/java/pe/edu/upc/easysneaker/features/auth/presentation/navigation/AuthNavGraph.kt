@@ -7,6 +7,7 @@ import androidx.navigation.navigation
 import kotlinx.serialization.Serializable
 import pe.edu.upc.easysneaker.features.auth.presentation.login.LoginScreen
 import pe.edu.upc.easysneaker.features.auth.presentation.register.RegisterScreen
+import pe.edu.upc.easysneaker.features.home.presentation.navigation.HomeNavGraphRoute
 
 @Serializable
 object AuthNavGraphRoute
@@ -21,7 +22,15 @@ fun NavGraphBuilder.authNavGraph(navController: NavController) {
 
     navigation<AuthNavGraphRoute>(startDestination = LoginRoute) {
         composable<LoginRoute> {
-            LoginScreen {
+            LoginScreen(
+                onLoginSuccess = {
+                    navController.navigate(HomeNavGraphRoute) {
+                        popUpTo(LoginRoute) {
+                            inclusive = true
+                        }
+                    }
+                }
+            ) {
                 navController.navigate(RegisterRoute)
             }
         }
