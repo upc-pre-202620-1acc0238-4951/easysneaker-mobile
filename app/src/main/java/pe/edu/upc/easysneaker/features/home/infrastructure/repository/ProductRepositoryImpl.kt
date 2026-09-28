@@ -31,7 +31,7 @@ class ProductRepositoryImpl @Inject constructor(
                 }
             }
 
-        } catch (e: Exception) {
+        } catch (_: Exception) {
 
         }
         return dao.fetchAllProducts().map { entity ->
@@ -65,7 +65,7 @@ class ProductRepositoryImpl @Inject constructor(
                     dao.insertProduct(entity)
                 }
             }
-        } catch (e: Exception) {
+        } catch (_: Exception) {
 
         }
         val entity = dao.fetchProductById(id)
