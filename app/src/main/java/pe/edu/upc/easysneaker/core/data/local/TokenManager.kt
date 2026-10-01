@@ -9,21 +9,26 @@ import kotlinx.coroutines.flow.map
 
 import javax.inject.Inject
 
-
 class TokenManager @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) {
-    private val tokenKey = stringPreferencesKey("token")
+
+    companion object {
+        val TOKEN = stringPreferencesKey("token")
+    }
 
     suspend fun getAuthToken(): String? {
         return dataStore.data.map {
-            it[tokenKey]
+            it[TOKEN]
         }.first()
     }
 
     suspend fun saveAuthToken(token: String) {
-        dataStore.edit { it[tokenKey] = token }
+        dataStore.edit { it[TOKEN] = token }
     }
 
+    suspend fun clearAuthToken() {
+        dataStore.edit { it.remove(TOKEN) }
+    }
 
 }
