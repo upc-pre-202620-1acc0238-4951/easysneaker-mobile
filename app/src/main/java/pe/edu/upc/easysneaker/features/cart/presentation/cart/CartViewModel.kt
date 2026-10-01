@@ -1,4 +1,4 @@
-package pe.edu.upc.easysneaker.features.cart.presentation
+package pe.edu.upc.easysneaker.features.cart.presentation.cart
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import pe.edu.upc.easysneaker.features.cart.application.GetCartUseCase
+import pe.edu.upc.easysneaker.features.cart.presentation.CartUiState
 import javax.inject.Inject
 
 @HiltViewModel

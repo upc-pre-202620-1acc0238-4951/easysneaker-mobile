@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import pe.edu.upc.easysneaker.features.cart.presentation.cart.CartViewModel
 import pe.edu.upc.easysneaker.features.cart.presentation.components.CartItemList
 
 @Composable
