@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import pe.edu.upc.easysneaker.core.designsystem.theme.EasySneakerTheme
 import pe.edu.upc.easysneaker.features.home.domain.Product
 import pe.edu.upc.easysneaker.features.home.presentation.home.components.ProductList
@@ -21,7 +22,7 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
     onProductClick: (Product) -> Unit
 ) {
-    val state = viewModel.uiState.collectAsState().value
+    val state = viewModel.uiState.collectAsStateWithLifecycle().value
 
     Column(
         modifier = modifier.fillMaxSize(),
