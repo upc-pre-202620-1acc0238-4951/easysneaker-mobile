@@ -9,6 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import pe.edu.upc.easysneaker.features.auth.presentation.navigation.AuthNavGraphRoute
 import pe.edu.upc.easysneaker.features.auth.presentation.navigation.authNavGraph
+import pe.edu.upc.easysneaker.features.cart.presentation.navigation.cartNavGraph
 import pe.edu.upc.easysneaker.features.home.presentation.navigation.homeNavGraph
 
 @Composable
@@ -21,6 +22,7 @@ fun AppNavHost(navController: NavHostController) {
         ) {
             authNavGraph(navController)
             homeNavGraph(navController)
+            cartNavGraph(navController)
         }
     }
 
