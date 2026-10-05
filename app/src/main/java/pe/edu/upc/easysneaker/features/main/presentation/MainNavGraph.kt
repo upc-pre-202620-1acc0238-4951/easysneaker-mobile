@@ -1,6 +1,5 @@
 package pe.edu.upc.easysneaker.features.main.presentation
 
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
@@ -13,7 +12,7 @@ data object MainNavGraphRoute
 @Serializable
 data object MainRoute
 
-fun NavGraphBuilder.mainNavGraph(navController: NavController) {
+fun NavGraphBuilder.mainNavGraph() {
 
     navigation<MainNavGraphRoute>(startDestination = MainRoute) {
         composable<MainRoute> {
