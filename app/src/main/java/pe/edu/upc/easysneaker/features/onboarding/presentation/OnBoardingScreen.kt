@@ -27,7 +27,9 @@ import pe.edu.upc.easysneaker.core.designsystem.theme.EasySneakerTheme
 
 
 @Composable
-fun OnBoardingScreen() {
+fun OnBoardingScreen(
+    onNext: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -53,7 +55,7 @@ fun OnBoardingScreen() {
         Spacer(modifier = Modifier.weight(1f))
 
         IconButton(
-            onClick = { },
+            onClick = onNext,
             colors = IconButtonDefaults.iconButtonColors(
                 containerColor = MaterialTheme.colorScheme.primaryContainer
             )
@@ -65,17 +67,9 @@ fun OnBoardingScreen() {
                     .clip(
                         CircleShape
                     )
-
-
             )
-
         }
-
-
-
         Spacer(modifier = Modifier.weight(1f))
-
-
     }
 
 }
@@ -84,7 +78,7 @@ fun OnBoardingScreen() {
 @Composable
 fun OnBoardingScreenPreview() {
     EasySneakerTheme {
-        OnBoardingScreen()
+        OnBoardingScreen {}
 
     }
 }
