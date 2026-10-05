@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val navController = rememberNavController()
-            EasySneakerTheme {
+            EasySneakerTheme (dynamicColor = false) {
                 AppNavHost(navController)
             }
         }
